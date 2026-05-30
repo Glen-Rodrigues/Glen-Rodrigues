@@ -139,7 +139,7 @@ I'm always open to conversations about AI, exciting opportunities, or just a goo
 
 <!-- 🔁 PLACEHOLDER: Replace glen.rodrigues@email.com with your actual email address -->
 
-[![Email](https://img.shields.io/badge/Email-Say%20Hello-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:glenandrew.7r@email.com)
+[![Email](https://img.shields.io/badge/Email-Say%20Hello-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:glenandrew.7r@gmail.com)
 
 </div>
 
