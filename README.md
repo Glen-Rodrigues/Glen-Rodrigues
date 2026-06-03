@@ -99,7 +99,7 @@ I'm a **B.E. CSE (AI & ML) student** based in **Bangalore, India**, on a focused
 
 <!-- ────────────────────────── GITHUB STATS ───────────────────────────────── -->
 
-## 📊 GitHub Stats
+<!-- ## 📊 GitHub Stats
 
 <div align="center">
 
@@ -119,7 +119,7 @@ I'm a **B.E. CSE (AI & ML) student** based in **Bangalore, India**, on a focused
 
 <br/>
 
----
+--- -->
 
 <!-- ──────────────────────────── CONNECT ──────────────────────────────────── -->
 
