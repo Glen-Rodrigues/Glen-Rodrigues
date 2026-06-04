@@ -58,9 +58,9 @@ I'm a **B.E. CSE (AI & ML) student** passionate about building intelligent syste
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=Glen-Rodrigues&show_icons=true&bg_color=EEF2FF&title_color=5C6BC0&icon_color=7E9CD8&text_color=3D3D3D&border_color=C5CAE9&border_radius=12&count_private=true&hide_border=false" height="165" alt="Glen's GitHub Stats" />
+<img src="github-stats.svg" height="165" alt="Glen's GitHub Stats" />
 &nbsp;
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Glen-Rodrigues&layout=compact&bg_color=EEF2FF&title_color=5C6BC0&text_color=3D3D3D&border_color=C5CAE9&border_radius=12&hide_border=false" height="165" alt="Glen's Top Languages" />
+<img src="github-langs.svg" height="165" alt="Glen's Top Languages" />
 
 </div>
 
