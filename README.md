@@ -58,9 +58,9 @@ I'm a **B.E. CSE (AI & ML) student** passionate about building intelligent syste
 
 <div align="center">
 
-<img src="github-stats.svg" height="165" alt="Glen's GitHub Stats" />
+<img src="https://raw.githubusercontent.com/Glen-Rodrigues/Glen-Rodrigues/main/github-stats.svg" height="165" alt="Glen's GitHub Stats" />
 &nbsp;
-<img src="github-langs.svg" height="165" alt="Glen's Top Languages" />
+<img src="https://raw.githubusercontent.com/Glen-Rodrigues/Glen-Rodrigues/main/github-langs.svg" height="165" alt="Glen's Top Languages" />
 
 </div>
 
