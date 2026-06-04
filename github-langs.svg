@@ -1,5 +1,14 @@
-The deployment is currently unavailable
-
-DEPLOYMENT_PAUSED
-
-iad1::zkj52-1780596372240-c158cec3bfab
+<svg width="495" height="179" viewBox="0 0 495 179" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0.5" y="0.5" width="494" height="178" rx="12" fill="#EEF2FF" stroke="#C5CAE9"/>
+    <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#5C6BC0">💬 Most Used Languages</text>
+    <line x1="25" y1="45" x2="470" y2="45" stroke="#C5CAE9" stroke-width="1"/>
+    <rect x="25" y="95" width="316" height="8" rx="4" fill="#555555"/>
+              <rect x="343" y="95" width="62" height="8" rx="4" fill="#2b7489"/>
+              <rect x="407" y="95" width="62" height="8" rx="4" fill="#f1e05a"/>
+              <circle cx="31" cy="116" r="6" fill="#555555"/>
+    <text x="43" y="120" font-family="Segoe UI,sans-serif" font-size="12" fill="#3D3D3D">C <tspan font-weight="600" fill="#5C6BC0">71%</tspan></text>
+              <circle cx="261" cy="116" r="6" fill="#2b7489"/>
+    <text x="273" y="120" font-family="Segoe UI,sans-serif" font-size="12" fill="#3D3D3D">TypeScript <tspan font-weight="600" fill="#5C6BC0">14%</tspan></text>
+              <circle cx="31" cy="138" r="6" fill="#f1e05a"/>
+    <text x="43" y="142" font-family="Segoe UI,sans-serif" font-size="12" fill="#3D3D3D">JavaScript <tspan font-weight="600" fill="#5C6BC0">14%</tspan></text>
+  </svg>
