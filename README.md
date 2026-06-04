@@ -66,7 +66,7 @@ I'm a **B.E. CSE (AI & ML) student** passionate about building intelligent syste
 
 <div align="center">
 
-<img src="https://github-readme-streak-stats.herokuapp.com?user=Glen-Rodrigues&background=EEF2FF&border=C5CAE9&stroke=7E9CD8&ring=5C6BC0&fire=E57373&currStreakLabel=5C6BC0&sideLabels=5C6BC0&dates=3D3D3D&border_radius=12" alt="Glen's GitHub Streak" />
+<img src="https://streak-stats.demolab.com?user=Glen-Rodrigues&background=EEF2FF&border=C5CAE9&stroke=7E9CD8&ring=5C6BC0&fire=E57373&currStreakLabel=5C6BC0&sideLabels=5C6BC0&dates=3D3D3D&border_radius=12" alt="Glen's GitHub Streak" />
 
 </div>
 
