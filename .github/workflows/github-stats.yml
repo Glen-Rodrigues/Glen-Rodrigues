@@ -18,27 +18,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate Stats SVGs via GitHub GraphQL
+      - name: Generate Stats SVGs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          node << 'EOF'
-          const https = require('https');
-          const fs = require('fs');
+          cat << 'SCRIPT' > generate.mjs
+          import https from 'https';
+          import fs from 'fs';
 
           const username = 'Glen-Rodrigues';
+          const bg = '#EEF2FF', border = '#C5CAE9', titleCol = '#5C6BC0', text = '#3D3D3D';
 
-          // Colors matching Glen's theme
-          const bg = '#EEF2FF';
-          const border = '#C5CAE9';
-          const title = '#5C6BC0';
-          const text = '#3D3D3D';
-          const icon = '#7E9CD8';
-
-          function gqlRequest(query) {
+          function gql(query) {
             return new Promise((resolve, reject) => {
               const body = JSON.stringify({ query });
-              const options = {
+              const req = https.request({
                 hostname: 'api.github.com',
                 path: '/graphql',
                 method: 'POST',
@@ -46,13 +40,15 @@ jobs:
                   'Authorization': `bearer ${process.env.GH_TOKEN}`,
                   'Content-Type': 'application/json',
                   'Content-Length': Buffer.byteLength(body),
-                  'User-Agent': 'github-stats-action'
+                  'User-Agent': 'stats-action'
                 }
-              };
-              const req = https.request(options, res => {
-                let data = '';
-                res.on('data', chunk => data += chunk);
-                res.on('end', () => resolve(JSON.parse(data)));
+              }, res => {
+                let d = '';
+                res.on('data', c => d += c);
+                res.on('end', () => {
+                  try { resolve(JSON.parse(d)); }
+                  catch(e) { reject(new Error('JSON parse failed: ' + d.slice(0,200))); }
+                });
               });
               req.on('error', reject);
               req.write(body);
@@ -60,117 +56,91 @@ jobs:
             });
           }
 
-          async function main() {
-            // Fetch user stats
-            const statsQuery = `{
-              user(login: "${username}") {
-                name
-                repositories(ownerAffiliations: OWNER, isFork: false, first: 100) {
-                  nodes { stargazerCount primaryLanguage { name } }
-                }
-                contributionsCollection {
-                  totalCommitContributions
-                  totalPullRequestContributions
-                  totalIssueContributions
-                }
-                followers { totalCount }
+          const result = await gql(`{
+            user(login: "${username}") {
+              repositories(ownerAffiliations: OWNER, isFork: false, first: 100) {
+                nodes { stargazerCount primaryLanguage { name } }
               }
-            }`;
-
-            const result = await gqlRequest(statsQuery);
-            const user = result.data.user;
-            const repos = user.repositories.nodes;
-
-            const stars = repos.reduce((s, r) => s + r.stargazerCount, 0);
-            const commits = user.contributionsCollection.totalCommitContributions;
-            const prs = user.contributionsCollection.totalPullRequestContributions;
-            const issues = user.contributionsCollection.totalIssueContributions;
-            const followers = user.followers.totalCount;
-
-            // Language stats
-            const langMap = {};
-            repos.forEach(r => {
-              if (r.primaryLanguage) {
-                langMap[r.primaryLanguage.name] = (langMap[r.primaryLanguage.name] || 0) + 1;
+              contributionsCollection {
+                totalCommitContributions
+                totalPullRequestContributions
+                totalIssueContributions
               }
-            });
-            const langColors = {
-              'Python': '#3572A5', 'JavaScript': '#f1e05a', 'C': '#555555',
-              'TypeScript': '#2b7489', 'Java': '#b07219', 'C++': '#f34b7d',
-              'HTML': '#e34c26', 'CSS': '#563d7c', 'Shell': '#89e051',
-              'Jupyter Notebook': '#DA5B0B'
-            };
-            const totalLangRepos = Object.values(langMap).reduce((a,b) => a+b, 0);
-            const topLangs = Object.entries(langMap)
-              .sort((a,b) => b[1]-a[1])
-              .slice(0, 5)
-              .map(([name, count]) => ({
-                name,
-                pct: Math.round((count / totalLangRepos) * 100),
-                color: langColors[name] || '#8b8b8b'
-              }));
+              followers { totalCount }
+            }
+          }`);
 
-            // ── Stats Card SVG ──────────────────────────────────────────────
-            const statsSVG = `<svg width="495" height="195" viewBox="0 0 495 195" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0.5" y="0.5" width="494" height="194" rx="12" fill="${bg}" stroke="${border}"/>
-              <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="${title}">📊 Glen's GitHub Stats</text>
-              <line x1="25" y1="45" x2="470" y2="45" stroke="${border}" stroke-width="1"/>
+          if (result.errors) throw new Error(JSON.stringify(result.errors));
 
-              <!-- Row 1 -->
-              <text x="25" y="72" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">⭐ Total Stars</text>
-              <text x="470" y="72" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${title}" text-anchor="end">${stars}</text>
+          const u = result.data.user;
+          const repos = u.repositories.nodes;
+          const stars = repos.reduce((s, r) => s + r.stargazerCount, 0);
+          const commits = u.contributionsCollection.totalCommitContributions;
+          const prs = u.contributionsCollection.totalPullRequestContributions;
+          const issues = u.contributionsCollection.totalIssueContributions;
+          const followers = u.followers.totalCount;
 
-              <text x="25" y="97" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">💻 Total Commits (this year)</text>
-              <text x="470" y="97" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${title}" text-anchor="end">${commits}</text>
+          // Stats card
+          const statsSVG = `<?xml version="1.0" encoding="UTF-8"?>
+          <svg width="495" height="195" viewBox="0 0 495 195" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="494" height="194" rx="12" fill="${bg}" stroke="${border}"/>
+            <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="${titleCol}">&#x1F4CA; Glen's GitHub Stats</text>
+            <line x1="25" y1="45" x2="470" y2="45" stroke="${border}" stroke-width="1"/>
+            <text x="25" y="72" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">&#11088; Total Stars Earned</text>
+            <text x="470" y="72" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${titleCol}" text-anchor="end">${stars}</text>
+            <text x="25" y="97" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">&#x1F4BB; Total Commits (this year)</text>
+            <text x="470" y="97" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${titleCol}" text-anchor="end">${commits}</text>
+            <text x="25" y="122" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">&#x1F500; Pull Requests</text>
+            <text x="470" y="122" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${titleCol}" text-anchor="end">${prs}</text>
+            <text x="25" y="147" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">&#x1F41B; Issues</text>
+            <text x="470" y="147" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${titleCol}" text-anchor="end">${issues}</text>
+            <text x="25" y="172" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">&#x1F465; Followers</text>
+            <text x="470" y="172" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${titleCol}" text-anchor="end">${followers}</text>
+          </svg>`;
 
-              <text x="25" y="122" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">🔀 Pull Requests</text>
-              <text x="470" y="122" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${title}" text-anchor="end">${prs}</text>
+          fs.writeFileSync('github-stats.svg', statsSVG.trim());
+          console.log('✅ github-stats.svg written, stars=' + stars + ' commits=' + commits);
 
-              <text x="25" y="147" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">🐛 Issues</text>
-              <text x="470" y="147" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${title}" text-anchor="end">${issues}</text>
+          // Language stats
+          const langColors = {
+            'Python':'#3572A5','JavaScript':'#f1e05a','C':'#555555','TypeScript':'#2b7489',
+            'Java':'#b07219','C++':'#f34b7d','HTML':'#e34c26','CSS':'#563d7c','Shell':'#89e051'
+          };
+          const langMap = {};
+          repos.forEach(r => { if (r.primaryLanguage) langMap[r.primaryLanguage.name] = (langMap[r.primaryLanguage.name]||0)+1; });
+          const total = Object.values(langMap).reduce((a,b)=>a+b,0)||1;
+          const topLangs = Object.entries(langMap).sort((a,b)=>b[1]-a[1]).slice(0,5)
+            .map(([name,count]) => ({ name, pct: Math.round(count/total*100), color: langColors[name]||'#8b8b8b' }));
 
-              <text x="25" y="172" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">👥 Followers</text>
-              <text x="470" y="172" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="${title}" text-anchor="end">${followers}</text>
-            </svg>`;
+          const barW = 445;
+          let xOff = 25;
+          const bars = topLangs.map(l => {
+            const w = Math.max(2, Math.round(l.pct/100*barW));
+            const r = `<rect x="${xOff}" y="88" width="${w}" height="8" rx="4" fill="${l.color}"/>`;
+            xOff += w + 2;
+            return r;
+          }).join('\n  ');
 
-            fs.writeFileSync('github-stats.svg', statsSVG.trim());
-            console.log('✅ github-stats.svg written');
+          const legend = topLangs.map((l,i) => {
+            const lx = 25 + (i%2)*230, ly = 115 + Math.floor(i/2)*22;
+            return `<circle cx="${lx+6}" cy="${ly-5}" r="6" fill="${l.color}"/><text x="${lx+18}" y="${ly}" font-family="Segoe UI,sans-serif" font-size="12" fill="${text}">${l.name} <tspan font-weight="600" fill="${titleCol}">${l.pct}%</tspan></text>`;
+          }).join('\n  ');
 
-            // ── Languages Card SVG ──────────────────────────────────────────
-            const barY = 95;
-            const barH = 8;
-            const barW = 445;
-            let xOff = 25;
-            const bars = topLangs.map(l => {
-              const w = Math.round((l.pct / 100) * barW);
-              const rect = `<rect x="${xOff}" y="${barY}" width="${w}" height="${barH}" rx="4" fill="${l.color}"/>`;
-              xOff += w + 2;
-              return rect;
-            }).join('\n              ');
+          const h = 115 + Math.ceil(topLangs.length/2)*22 + 15;
+          const langsSVG = `<?xml version="1.0" encoding="UTF-8"?>
+          <svg width="495" height="${h}" viewBox="0 0 495 ${h}" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="494" height="${h-1}" rx="12" fill="${bg}" stroke="${border}"/>
+            <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="${titleCol}">&#x1F4AC; Most Used Languages</text>
+            <line x1="25" y1="45" x2="470" y2="45" stroke="${border}" stroke-width="1"/>
+            <text x="25" y="75" font-family="Segoe UI,sans-serif" font-size="12" fill="${text}">Based on public repository count</text>
+            ${bars}
+            ${legend}
+          </svg>`;
 
-            const legendItems = topLangs.map((l, i) => {
-              const lx = 25 + (i % 2) * 230;
-              const ly = 120 + Math.floor(i / 2) * 22;
-              return `<circle cx="${lx+6}" cy="${ly-4}" r="6" fill="${l.color}"/>
-              <text x="${lx+18}" y="${ly}" font-family="Segoe UI,sans-serif" font-size="12" fill="${text}">${l.name} <tspan font-weight="600" fill="${title}">${l.pct}%</tspan></text>`;
-            }).join('\n              ');
-
-            const height = 120 + Math.ceil(topLangs.length / 2) * 22 + 15;
-            const langsSVG = `<svg width="495" height="${height}" viewBox="0 0 495 ${height}" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0.5" y="0.5" width="494" height="${height-1}" rx="12" fill="${bg}" stroke="${border}"/>
-              <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="${title}">💬 Most Used Languages</text>
-              <line x1="25" y1="45" x2="470" y2="45" stroke="${border}" stroke-width="1"/>
-              ${topLangs.length === 0
-                ? `<text x="247" y="90" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}" text-anchor="middle">No language data yet</text>`
-                : `${bars}\n              ${legendItems}`}
-            </svg>`;
-
-            fs.writeFileSync('github-langs.svg', langsSVG.trim());
-            console.log('✅ github-langs.svg written');
-          }
-
-          main().catch(e => { console.error(e); process.exit(1); });
-          EOF
+          fs.writeFileSync('github-langs.svg', langsSVG.trim());
+          console.log('✅ github-langs.svg written, langs=' + topLangs.map(l=>l.name).join(','));
+          SCRIPT
+          node generate.mjs
 
       - name: Commit and push SVGs
         run: |
