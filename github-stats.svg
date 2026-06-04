@@ -1,21 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="495" height="195" viewBox="0 0 495 195" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.5" y="0.5" width="494" height="194" rx="12" fill="#EEF2FF" stroke="#C5CAE9"/>
-    <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#5C6BC0">📊 Glen's GitHub Stats</text>
-    <line x1="25" y1="45" x2="470" y2="45" stroke="#C5CAE9" stroke-width="1"/>
-
-    <!-- Row 1 -->
-    <text x="25" y="72" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">⭐ Total Stars</text>
-    <text x="470" y="72" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">0</text>
-
-    <text x="25" y="97" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">💻 Total Commits (this year)</text>
-    <text x="470" y="97" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">35</text>
-
-    <text x="25" y="122" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">🔀 Pull Requests</text>
-    <text x="470" y="122" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">1</text>
-
-    <text x="25" y="147" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">🐛 Issues</text>
-    <text x="470" y="147" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">0</text>
-
-    <text x="25" y="172" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">👥 Followers</text>
-    <text x="470" y="172" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">2</text>
-  </svg>
+  <rect x="0.5" y="0.5" width="494" height="194" rx="12" fill="#EEF2FF" stroke="#C5CAE9"/>
+  <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#5C6BC0">&#x1F4CA; Glen's GitHub Stats</text>
+  <line x1="25" y1="45" x2="470" y2="45" stroke="#C5CAE9" stroke-width="1"/>
+  <text x="25" y="72" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">&#11088; Total Stars Earned</text>
+  <text x="470" y="72" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">0</text>
+  <text x="25" y="97" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">&#x1F4BB; Total Commits (this year)</text>
+  <text x="470" y="97" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">37</text>
+  <text x="25" y="122" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">&#x1F500; Pull Requests</text>
+  <text x="470" y="122" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">1</text>
+  <text x="25" y="147" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">&#x1F41B; Issues</text>
+  <text x="470" y="147" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">0</text>
+  <text x="25" y="172" font-family="Segoe UI,sans-serif" font-size="13" fill="#3D3D3D">&#x1F465; Followers</text>
+  <text x="470" y="172" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#5C6BC0" text-anchor="end">2</text>
+</svg>
