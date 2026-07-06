@@ -137,23 +137,24 @@ jobs:
           let xOff = 25;
           const bars = topLangs.map(l => {
             const w = Math.max(2, Math.round(l.pct/100*barW));
-            const r = `<rect x="${xOff}" y="88" width="${w}" height="8" rx="4" fill="${l.color}"/>`;
+            const r = `<rect x="${xOff}" y="100" width="${w}" height="10" rx="5" fill="${l.color}"/>`;
             xOff += w + 2;
             return r;
           }).join('\n  ');
 
           const legend = topLangs.map((l,i) => {
-            const lx = 25 + (i%2)*230, ly = 115 + Math.floor(i/2)*22;
-            return `<circle cx="${lx+6}" cy="${ly-5}" r="6" fill="${l.color}"/><text x="${lx+18}" y="${ly}" font-family="Segoe UI,sans-serif" font-size="12" fill="${text}">${l.name} <tspan font-weight="600" fill="${titleCol}">${l.pct}%</tspan></text>`;
+            const lx = 25 + (i%2)*230, ly = 150 + Math.floor(i/2)*40;
+            return `<circle cx="${lx+6}" cy="${ly-5}" r="6" fill="${l.color}"/><text x="${lx+18}" y="${ly}" font-family="Segoe UI,sans-serif" font-size="13" fill="${text}">${l.name} <tspan font-weight="600" fill="${accent}">${l.pct}%</tspan></text>`;
           }).join('\n  ');
 
-          const h = 115 + Math.ceil(topLangs.length/2)*22 + 15;
+          // Fixed 220px height so it aligns with the stats card side-by-side
+          const h = 220;
           const langsSVG = `<?xml version="1.0" encoding="UTF-8"?>
           <svg width="495" height="${h}" viewBox="0 0 495 ${h}" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.5" y="0.5" width="494" height="${h-1}" rx="12" fill="${bg}" stroke="${border}"/>
-            <text x="25" y="35" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="${titleCol}">&#x1F4AC; Most Used Languages</text>
-            <line x1="25" y1="45" x2="470" y2="45" stroke="${border}" stroke-width="1"/>
-            <text x="25" y="75" font-family="Segoe UI,sans-serif" font-size="12" fill="${text}">Based on public repository count</text>
+            <text x="25" y="38" font-family="Segoe UI,sans-serif" font-size="15" font-weight="700" fill="${titleCol}">&#x1F4AC; Most Used Languages</text>
+            <line x1="25" y1="50" x2="470" y2="50" stroke="${border}" stroke-width="1"/>
+            <text x="25" y="82" font-family="Segoe UI,sans-serif" font-size="12" fill="${text}">Based on public repository count</text>
             ${bars}
             ${legend}
           </svg>`;

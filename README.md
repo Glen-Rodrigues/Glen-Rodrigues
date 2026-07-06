@@ -21,19 +21,7 @@
 
 ## 🧑‍💻 About Me
 
-```python
-class GlenAndrewRodrigues:
-    def __init__(self):
-        self.role      = "Aspiring AI/ML Engineer"
-        self.education = "B.E. CSE (AI & ML)"
-        self.location  = "Bangalore, India"
-        self.focus     = "MLOps · Customer Churn Prediction"
-        self.learning  = ["Deep Learning", "MLOps", "DSA"]
-        self.interests = ["Audiophile 🎧", "Open Source"]
-
-    def current_goal(self):
-        return "Land my first role as an AI/ML Engineer 🚀"
-```
+I'm a **B.E. CSE (AI & ML)** student and aspiring **AI/ML Engineer** based in Bangalore, India. I love turning raw data into intelligent systems — and I learn best by building in public and contributing to open source.
 
 - 🎯 &nbsp; Targeting roles in **AI / ML Engineering**
 - 🔭 &nbsp; Currently building an **end-to-end MLOps churn-prediction pipeline**
@@ -92,27 +80,13 @@ class GlenAndrewRodrigues:
 
 ## 🚀 Featured Projects
 
-<div align="center">
-
-<a href="https://github.com/Glen-Rodrigues/customer-churn-mlops">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Glen-Rodrigues&repo=customer-churn-mlops&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&icon_color=bf91f3&border_color=414868&hide_border=false" alt="customer-churn-mlops" />
-</a>
-&nbsp;
-<a href="https://github.com/Glen-Rodrigues/applied-business-intelligence">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Glen-Rodrigues&repo=applied-business-intelligence&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&icon_color=bf91f3&border_color=414868&hide_border=false" alt="applied-business-intelligence" />
-</a>
-
-<a href="https://github.com/Glen-Rodrigues/shopsphere">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Glen-Rodrigues&repo=shopsphere&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&icon_color=bf91f3&border_color=414868&hide_border=false" alt="shopsphere" />
-</a>
-
-</div>
-
 | Project | What it does | Stack |
 | :------ | :----------- | :---- |
-| **[🤖 customer-churn-mlops](https://github.com/Glen-Rodrigues/customer-churn-mlops)** | End-to-end ML pipeline predicting customer churn — data analysis, feature engineering, model training, explainability & deployment. _(Current focus)_ | `Python` `scikit-learn` `Docker` `FastAPI` |
+| **[🤖 customer-churn-mlops](https://github.com/Glen-Rodrigues/customer-churn-mlops)** &nbsp;<br/>🔭 _Current focus_ | End-to-end ML pipeline predicting customer churn — data analysis, feature engineering, model training, explainability & deployment. | `Python` `scikit-learn` `Docker` `FastAPI` |
 | **[📊 applied-business-intelligence](https://github.com/Glen-Rodrigues/applied-business-intelligence)** | Portfolio of BI solutions across data engineering, analytics, ML, decision support & optimization. | `Python` `Pandas` `SQL` |
 | **[🛒 shopsphere](https://github.com/Glen-Rodrigues/shopsphere)** | AI-assisted online shopping application built using the GitHub Copilot Agent. | `JavaScript` `AI` |
+
+<div align="center"><sub>➡️ &nbsp;See all my work on my <a href="https://github.com/Glen-Rodrigues?tab=repositories">repositories page</a></sub></div>
 
 ---
 
@@ -126,25 +100,9 @@ class GlenAndrewRodrigues:
 &nbsp;
 <img src="https://raw.githubusercontent.com/Glen-Rodrigues/Glen-Rodrigues/main/github-langs.svg" height="220" alt="Glen's Top Languages" />
 
-<br/><br/>
+<br/>
 
 <img src="https://streak-stats.demolab.com?user=Glen-Rodrigues&theme=tokyonight&background=1a1b27&border=414868&stroke=70a5fd&ring=bf91f3&fire=bf91f3&currStreakLabel=70a5fd&sideLabels=70a5fd&dates=a9b1d6&currStreakNum=c0caf5&sideNums=c0caf5&border_radius=12" alt="Glen's GitHub Streak" />
-
-<br/><br/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Glen-Rodrigues&theme=tokyo-night&bg_color=1a1b27&color=70a5fd&line=bf91f3&point=c0caf5&area=true&hide_border=false&border_color=414868&custom_title=Contribution%20Activity" width="95%" alt="Activity Graph" />
-
-</div>
-
----
-
-<!-- ──────────────────────────── TROPHIES ──────────────────────────── -->
-
-## 🏆 Trophies
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=Glen-Rodrigues&theme=tokyonight&no-frame=true&no-bg=true&column=7&margin-w=8&margin-h=8" width="95%" alt="Trophies" />
 
 </div>
 
@@ -175,8 +133,6 @@ class GlenAndrewRodrigues:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Glen%20Andrew%20Rodrigues-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/glen-andrew-rodrigues)
 &nbsp;
 [![Email](https://img.shields.io/badge/Email-Say%20Hello-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:glenandrew.7r@gmail.com)
-
-<br/><br/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:bf91f3,50:5c6bc0,100:1a1b27&height=120&section=footer&text=Locked%20In%20%F0%9F%92%AA&fontSize=20&fontColor=c0caf5&animation=fadeIn&fontAlignY=70" width="100%" alt="footer" />
 
