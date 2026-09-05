@@ -12,7 +12,7 @@
   <text x="25" y="72" font-family="Segoe UI,sans-serif" font-size="13" fill="#a9b1d6">&#11088; Total Stars Earned</text>
   <text x="315" y="72" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#bf91f3" text-anchor="end">0</text>
   <text x="25" y="97" font-family="Segoe UI,sans-serif" font-size="13" fill="#a9b1d6">&#x1F4BB; Total Commits (this year)</text>
-  <text x="315" y="97" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#bf91f3" text-anchor="end">248</text>
+  <text x="315" y="97" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#bf91f3" text-anchor="end">250</text>
   <text x="25" y="122" font-family="Segoe UI,sans-serif" font-size="13" fill="#a9b1d6">&#x1F500; Total Pull Requests</text>
   <text x="315" y="122" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#bf91f3" text-anchor="end">10</text>
   <text x="25" y="147" font-family="Segoe UI,sans-serif" font-size="13" fill="#a9b1d6">&#x1F41B; Total Issues</text>
@@ -22,7 +22,7 @@
   <text x="25" y="197" font-family="Segoe UI,sans-serif" font-size="13" fill="#a9b1d6">&#x1F465; Followers</text>
   <text x="315" y="197" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600" fill="#bf91f3" text-anchor="end">3</text>
   <circle cx="405" cy="130" r="48" fill="none" stroke="#2f3350" stroke-width="8"/>
-  <circle cx="405" cy="130" r="48" fill="none" stroke="url(#ring)" stroke-width="8" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="117.12133333333334" transform="rotate(-90 405 130)"/>
+  <circle cx="405" cy="130" r="48" fill="none" stroke="url(#ring)" stroke-width="8" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="116.11600000000001" transform="rotate(-90 405 130)"/>
   <text x="405" y="126" font-family="Segoe UI,sans-serif" font-size="26" font-weight="700" fill="#c0caf5" text-anchor="middle">A</text>
   <text x="405" y="146" font-family="Segoe UI,sans-serif" font-size="11" fill="#a9b1d6" text-anchor="middle">Rank</text>
 </svg>
